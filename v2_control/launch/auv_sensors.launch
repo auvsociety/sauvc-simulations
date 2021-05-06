@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+	<arg name="show_loc" default="true"/>
+	<arg name="show_frnt" default="true"/>
+	<arg name="show_dwn" default="false"/>
+
+	<node 
+		name="$(anon auv_frnt_vision_raw)"
+		pkg="image_view" 
+		type="image_view"
+		args="image:=/auv_v2/f_cam/image_raw"
+		output="screen"
+		if="$(arg show_frnt)"/>
+	
+	<node 
+		name="$(anon auv_dwn_vision_raw)"
+		pkg="image_view" 
+		type="image_view"
+		args="image:=/auv_v2/d_cam/image_raw"
+		output="screen"
+		if="$(arg show_dwn)"/>
+	
+	<node 
+		name="auv_loc_sensors"
+		pkg="v2_utility" 
+		type="loc_sensors"
+		output="screen"
+		if="$(arg show_loc)"/>
+	
+</launch>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="start_point" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <link name="start">
+    <inertial>
+      <origin
+        xyz="-5.141E-05 4.7529E-05 4.8926E-06"
+        rpy="0 0 0" />
+      <mass
+        value="40.85" />
+      <inertia
+        ixx="11.586"
+        ixy="-9.98170000000005E-08"
+        ixz="8.7525E-06"
+        iyy="11.586"
+        iyz="1.53900000007063E-05"
+        izz="23.121" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 0" />
+      <geometry>
+        <mesh
+          filename="package://v2_visual/meshes/start.STL" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 0" />
+      <geometry>
+        <mesh
+          filename="package://v2_visual/meshes/start.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <gazebo reference="start">
+	<material>Gazebo/Yellow</material>
+  </gazebo>
+  
+  <gazebo>
+	<static>true</static>
+  </gazebo>
+  
+</robot>

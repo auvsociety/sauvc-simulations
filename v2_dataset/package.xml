@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>v2_dataset</name>
+  <version>0.1.1</version>
+  <description>
+    This package contains ROSBags and image dataset obtained from SAUVC simulation to test SLAM algorithms in non-realtime
+  </description>
+
+  <author email="auv.society@iiitdm.ac.in">Mate</author>
+
+  <maintainer email="auv.society@iiitdm.ac.in">Mate</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+</package>

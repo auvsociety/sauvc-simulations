@@ -1,0 +1,27 @@
+<package format="2">
+  <name>v2_visual</name>
+  <version>0.1.1</version>
+
+  <description>This package contains visualizing files for the simulation of AUV_v2.</description>
+  <author email="auv.society@iiitdm.ac.in">Mate</author>
+
+  <maintainer email="auv.society@iiitdm.ac.in">Mate</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roslaunch</build_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>gazebo_ros</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz</exec_depend>
+  <exec_depend>xacro</exec_depend>
+
+  <export>
+	<gazebo_ros gazebo_model_path="${prefix}/models" />
+	<gazebo_ros gazebo_media_path="${prefix}"/>
+  </export>
+  
+</package>

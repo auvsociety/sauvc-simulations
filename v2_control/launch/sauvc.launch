@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+	<arg name="round" default="2" />
+	<arg name="use_rviz" default="false"/>
+	<arg name="show_task_balls" default="false"/>
+	
+	<arg name="model_name" value="auv_v2"/>
+	<include file="$(find v2_visual)/launch/sauvc-game.launch">
+		<arg name="round" value="$(arg round)"/>
+		<arg name="show_task_balls" value="$(arg show_task_balls)"/>
+		<arg name="model_name" value="$(arg model_name)"/>
+	</include>
+
+	<rosparam file="$(find v2_control)/config/pid_gains.yaml" ns="auv_v2"/>
+	
+	<group ns="$(arg model_name)">
+      <node name="rviz" pkg="rviz" type="rviz"  args="-d $(find v2_visual)/config/sauvc-game.rviz" output="screen" if="$(arg use_rviz)"/>
+	</group>
+	
+</launch>

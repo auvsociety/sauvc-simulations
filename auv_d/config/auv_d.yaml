@@ -1,0 +1,9 @@
+controllers:
+    config:
+        body:
+            cascaded_position: False
+            dynamic_reconfigure: True
+        joints:
+            cascaded_position: False
+            dynamic_reconfigure: True
+

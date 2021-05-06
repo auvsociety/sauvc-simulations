@@ -1,0 +1,876 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot
+  name="auv">
+  
+  <link name="dummy"/>
+  
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-2.6314E-05 0.235 -0.013828"
+        rpy="0 0 0" />
+      <mass
+        value="6.8795" />
+      <inertia
+        ixx="0.16825"
+        ixy="-6.6195E-09"
+        ixz="6.8542E-08"
+        iyy="0.084939"
+        iyz="1.949E-08"
+        izz="0.23517" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/base_link_collision.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint 
+	name="dummy_joint"
+	type="fixed">
+	<parent link="dummy"/>
+	<child link="base_link"/>
+	</joint>
+  
+  <link
+    name="star_rail">
+    <inertial>
+      <origin
+        xyz="-0.15977 0.002631 -0.23091"
+        rpy="0 0 0" />
+      <mass
+        value="0.15121" />
+      <inertia
+        ixx="0.0027971"
+        ixy="-1.7644E-07"
+        ixz="6.1934E-20"
+        iyy="0.0027973"
+        iyz="-1.9729E-20"
+        izz="2.7288E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/star_rail.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.53725 0.53725 0.53725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/star_rail_collision.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="star_rail_joint"
+    type="fixed">
+    <origin
+      xyz="-0.015202 0.0040911 -0.010109"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="star_rail" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="thruster_4_mount">
+    <inertial>
+      <origin
+        xyz="-0.21864 -0.0075071 -0.026361"
+        rpy="0 0 0" />
+      <mass
+        value="0.018878" />
+      <inertia
+        ixx="2.3546E-05"
+        ixy="-1.8162E-09"
+        ixz="1.0134E-05"
+        iyy="2.903E-05"
+        iyz="5.6221E-09"
+        izz="8.3832E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/thruster_4_mount.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96078 0.96078 0.96471 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/thruster_4_mount_collision.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="thruster_4_mount_joint"
+    type="fixed">
+    <origin
+      xyz="0.015202 0.010109 0.0040911"
+      rpy="0 0 0" />
+    <parent
+      link="star_rail" />
+    <child
+      link="thruster_4_mount" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="thruster_4">
+    <inertial>
+      <origin
+        xyz="-0.27365 -0.0075011 0.045419"
+        rpy="0 0 0" />
+      <mass
+        value="0.18769" />
+      <inertia
+        ixx="0.00015289"
+        ixy="1.1979E-08"
+        ixz="2.5584E-05"
+        iyy="0.0001328"
+        iyz="-1.7024E-08"
+        izz="0.00015349" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/thruster_4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/thruster_4_collision.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="thruster_4_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="thruster_4_mount" />
+    <child
+      link="thruster_4" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="thruster_5_mount">
+    <inertial>
+      <origin
+        xyz="-0.21025 -0.0075 -0.235"
+        rpy="0 0 0" />
+      <mass
+        value="0.022113" />
+      <inertia
+        ixx="2.6949E-05"
+        ixy="-9.44E-22"
+        ixz="1.2218E-22"
+        iyy="3.34E-05"
+        iyz="-8.5444E-22"
+        izz="8.7563E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/thruster_5_mount.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.62745 0.62745 0.62745 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/thruster_5_mount_collision.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="thruster_5_mount_joint"
+    type="fixed">
+    <origin
+      xyz="0.015202 0.010109 0.0040911"
+      rpy="0 0 0" />
+    <parent
+      link="star_rail" />
+    <child
+      link="thruster_5_mount" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="thruster_5">
+    <inertial>
+      <origin
+        xyz="-0.28662 0.0014508 -0.235"
+        rpy="0 0 0" />
+      <mass
+        value="0.18772" />
+      <inertia
+        ixx="0.00012766"
+        ixy="2.9909E-07"
+        ixz="2.0474E-08"
+        iyy="0.00017881"
+        iyz="3.1171E-09"
+        izz="0.00013285" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/thruster_5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/thruster_5_collision.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="thruster_5_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="thruster_5_mount" />
+    <child
+      link="thruster_5" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="thruster_6_mount">
+    <inertial>
+      <origin
+        xyz="-0.218636116139921 -0.00749289403790487 -0.443639133336319"
+        rpy="0 0 0" />
+      <mass
+        value="0.0188779917005725" />
+      <inertia
+        ixx="2.35464924155428E-05"
+        ixy="1.8162061621199E-09"
+        ixz="-1.0134265369623E-05"
+        iyy="2.90296150829582E-05"
+        iyz="5.62212207360044E-09"
+        izz="8.38317442685659E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/thruster_6_mount.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96078431372549 0.96078431372549 0.964705882352941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/thruster_6_mount_collision.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="thruster_6_mount_joint"
+    type="fixed">
+    <origin
+      xyz="0.015202 0.010109 0.0040911"
+      rpy="0 0 0" />
+    <parent
+      link="star_rail" />
+    <child
+      link="thruster_6_mount" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="thruster_6">
+    <inertial>
+      <origin
+        xyz="-0.27365 -0.0074989 -0.51542"
+        rpy="0 0 0" />
+      <mass
+        value="0.18769" />
+      <inertia
+        ixx="0.00015289"
+        ixy="-1.1983E-08"
+        ixz="-2.5582E-05"
+        iyy="0.0001328"
+        iyz="-1.702E-08"
+        izz="0.00015349" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/thruster_6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/thruster_6_collision.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="thruster_6_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="thruster_6_mount" />
+    <child
+      link="thruster_6" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="port_rail">
+    <inertial>
+      <origin
+        xyz="-0.1489 -0.010868 -0.061963"
+        rpy="0 0 0" />
+      <mass
+        value="0.15121" />
+      <inertia
+        ixx="0.0027971"
+        ixy="-1.7644E-07"
+        ixz="-6.1966E-20"
+        iyy="0.0027973"
+        iyz="1.9723E-20"
+        izz="2.7288E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/port_rail.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.53725 0.53725 0.53725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/port_rail_collision.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="port_rail_joint"
+    type="fixed">
+    <origin
+      xyz="0.32388 0.17304 0.0033462"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="port_rail" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="thruster_1_mount">
+    <inertial>
+      <origin
+        xyz="0.21864 -0.0074929 -0.026227"
+        rpy="0 0 0" />
+      <mass
+        value="0.018878" />
+      <inertia
+        ixx="2.3546E-05"
+        ixy="-1.8162E-09"
+        ixz="-1.0134E-05"
+        iyy="2.903E-05"
+        iyz="-5.6221E-09"
+        izz="8.3832E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/thruster_1_mount.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96078 0.96078 0.96471 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/thruster_1_mount_collision.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="thruster_1_mount_joint"
+    type="fixed">
+    <origin
+      xyz="-0.32388 -0.0033462 0.17304"
+      rpy="0 0 0" />
+    <parent
+      link="port_rail" />
+    <child
+      link="thruster_1_mount" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="thruster_1">
+    <inertial>
+      <origin
+        xyz="0.27365 -0.0074989 0.045553"
+        rpy="0 0 0" />
+      <mass
+        value="0.18769" />
+      <inertia
+        ixx="0.00015289"
+        ixy="1.1988E-08"
+        ixz="-2.5582E-05"
+        iyy="0.0001328"
+        iyz="1.7015E-08"
+        izz="0.00015349" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/thruster_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/thruster_1_collision.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="thruster_1_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="thruster_1_mount" />
+    <child
+      link="thruster_1" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="thruster_2_mount">
+    <inertial>
+      <origin
+        xyz="0.210250945732009 -0.0075 -0.235"
+        rpy="0 0 0" />
+      <mass
+        value="0.0221133852296083" />
+      <inertia
+        ixx="2.69494123301925E-05"
+        ixy="7.75855424135227E-22"
+        ixz="1.02286654303524E-20"
+        iyy="3.33998602168454E-05"
+        iyz="8.67733969672966E-22"
+        izz="8.75632150273414E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/thruster_2_mount.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.627450980392157 0.627450980392157 0.627450980392157 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/thruster_2_mount_collision.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="thruster_2_mount_joint"
+    type="fixed">
+    <origin
+      xyz="-0.32388 -0.0033462 0.17304"
+      rpy="0 0 0" />
+    <parent
+      link="port_rail" />
+    <child
+      link="thruster_2_mount" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="thruster_2">
+    <inertial>
+      <origin
+        xyz="0.28662 -0.016451 -0.235"
+        rpy="0 0 0" />
+      <mass
+        value="0.18772" />
+      <inertia
+        ixx="0.00012766"
+        ixy="2.9909E-07"
+        ixz="-2.0474E-08"
+        iyy="0.00017881"
+        iyz="-3.1091E-09"
+        izz="0.00013285" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/thruster_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/thruster_2_collision.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="thruster_2_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="thruster_2_mount" />
+    <child
+      link="thruster_2" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="thruster_3_mount">
+    <inertial>
+      <origin
+        xyz="0.21864 -0.0075071 -0.44364"
+        rpy="0 0 0" />
+      <mass
+        value="0.018878" />
+      <inertia
+        ixx="2.3546E-05"
+        ixy="1.8162E-09"
+        ixz="1.0134E-05"
+        iyy="2.903E-05"
+        iyz="-5.6221E-09"
+        izz="8.3832E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/thruster_3_mount.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96078 0.96078 0.96471 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/thruster_3_mount_collision.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="thruster_3_mount_joint"
+    type="fixed">
+    <origin
+      xyz="-0.32388 -0.0033462 0.17304"
+      rpy="0 0 0" />
+    <parent
+      link="port_rail" />
+    <child
+      link="thruster_3_mount" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="thruster_3">
+    <inertial>
+      <origin
+        xyz="0.27365 -0.0075011 -0.51542"
+        rpy="0 0 0" />
+      <mass
+        value="0.18769" />
+      <inertia
+        ixx="0.00015289"
+        ixy="-1.1979E-08"
+        ixz="2.5582E-05"
+        iyy="0.0001328"
+        iyz="1.7024E-08"
+        izz="0.00015349" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/thruster_3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/thruster_3_collision.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="thruster_3_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="thruster_3_mount" />
+    <child
+      link="thruster_3" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+ <link
+    name="weight">
+    <inertial>
+      <origin
+        xyz="-3.151E-50 -0.1575 -0.235"
+        rpy="0 0 0" />
+      <mass
+        value="50.6507" />
+      <inertia
+        ixx="0.0086977"
+        ixy="2.8814E-35"
+        ixz="-2.8472E-35"
+        iyy="0.0074551"
+        iyz="-1.2852E-35"
+        izz="0.0086977" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/weight.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://auv_simulation/meshes/weight.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint
+    name="weight_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="weight" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+	
+	
+	
+	
+		<gazebo>
+			<plugin name="freebuoyancy_gazebo" filename="libfreebuoyancy_gazebo.so">
+			  <descriptionParam>robot_description</descriptionParam>
+			  <fluidTopic>current</fluidTopic>
+			  <alwaysOn>true</alwaysOn>
+			  <surface>0 0 -0.1</surface>
+			  <updateRate>.001</updateRate>
+
+			  <link name="dummy">
+					<buoyancy>
+					<compensation>1.01</compensation>
+						<origin xyz="-2.6314E-05 0.235 -0.013828"/>
+					</buoyancy>
+				</link>
+			</plugin>
+		</gazebo>
+	
+	
+</robot>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="auv_d" xmlns:xacro="http://www.ros.org/wiki/xacro">
+	
+  <!-- Dummy thruster links to define position of the thrusters -->
+  <!-- In the input parameters to this macro are pose of the joint -->
+  <xacro:macro name="thruster_dummy_link" params="name xyz rpy">        
+        
+         <link name="${name}">
+            <buoyancy>
+				<compensation>
+					1.0				
+				</compensation>
+			</buoyancy>                
+        </link>
+        
+        <joint name="${name}" type="fixed">
+            <parent link="base_link"/>
+            <child link="${name}"/>
+            <origin rpy="${rpy}" xyz="${xyz}"/>
+        </joint>
+                            
+    </xacro:macro>             
+	
+  <link name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.04109 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="3.316" />
+      <inertia
+        ixx="0.80026"
+        ixy="0"
+        ixz="0"
+        iyy="0.043168"
+        iyz="0"
+        izz="0.038699" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+		<mesh filename="package://auv_d/meshes/assembly_full.STL"/>
+      </geometry>
+    </visual>
+    <buoyancy>
+      <compensation>1.01</compensation>
+      <origin xyz="-0.04109 0 0"/>
+      <limit radius="0.1"/>
+      <damping xyz="10 10 10" rpy="10 10 10" type="linear"/>
+	</buoyancy>
+  </link>
+  
+  <gazebo reference="base_link">
+		<material>Gazebo/Blue</material>
+   </gazebo>
+        
+  
+  <xacro:thruster_dummy_link name="thruster_port" xyz="-0.14 0.05 0" rpy="1.5708 0 0"/>
+  <xacro:thruster_dummy_link name="thruster_star" xyz="-0.14 -0.05 0" rpy="1.5708 0 0"/>  
+  
+  <!-- The control plugin -->
+  <gazebo>
+	<plugin name="freefloating_gazebo_control" filename="libfreefloating_gazebo_control.so">
+		<switchService>switch</switchService>
+		<updateRate>100</updateRate>
+		<link>base_link</link>
+		
+		 <!-- for each thruster, give the map to XYZ+RPY and the maximum effort -->
+        <thruster>
+            <effort>40</effort>
+            <name>thruster_port</name>
+            <map>1 0 0 0 0 -1</map>
+        </thruster>
+		<thruster>
+            <effort>40</effort>
+            <name>thruster_star</name>
+            <map>1 0 0 0 0 1</map>
+        </thruster>
+		
+	</plugin>
+  </gazebo>
+  
+</robot>

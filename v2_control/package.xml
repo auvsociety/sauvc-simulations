@@ -1,0 +1,44 @@
+<package format="2">
+  <name>v2_control</name>
+  <version>1.1.1</version>
+
+  <description>This package contains control files for the simulation of AUV_v2.</description>
+  <author email="auv.society@iiitdm.ac.in">Mate</author>
+
+  <maintainer email="auv.society@iiitdm.ac.in">Mate</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roslaunch</build_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>controller_manager</exec_depend>
+  <exec_depend>diff_drive_controller</exec_depend>
+  <exec_depend>gazebo_ros</exec_depend>
+  <exec_depend>gazebo_ros_control</exec_depend>
+  <exec_depend>joint_state_controller</exec_depend>
+  <exec_depend>position_controllers</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz</exec_depend>
+
+  <build_depend>roscpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>darknet_ros_msgs</build_depend>
+
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>v2_visual</exec_depend>
+  <exec_depend>darknet_ros_msgs</exec_depend>
+
+  <depend>nav_msgs</depend>
+  <depend>geometry_msgs</depend>
+
+  <!-- DSO dependencies -->
+  <depend>dso</depend>
+  <depend>cv_bridge</depend>
+  
+</package>

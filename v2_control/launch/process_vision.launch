@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+	<arg name="show_frnt_raw" default="false"/>
+	<arg name="show_dwn_raw" default="false"/>
+	<arg name="show_frnt_drknt" default="true"/>
+	<arg name="f_width" default="640"/>
+	<arg name="f_height" default="480"/>
+
+	<!--  
+		This node is not launched yet because the darknet data has only been trained with 
+		raw images and not calibrated images.
+	-->
+	<!--
+	<node 
+		name="frnt_vision_calib"
+		pkg="v2_control" 
+		type="front_vision.py"
+		args=" -f_width $(arg f_width) -f_height $(arg f_height)"
+		output="screen"
+		respawn="true"
+	/> -->
+
+	<include file="$(find darknet_ros)/launch/yolo_v3.launch">
+	</include>
+
+	<node 
+		name="$(anon auv_frnt_vision_raw)"
+		pkg="image_view" 
+		type="image_view"
+		args="image:=/auv_v2/f_cam/image_raw"
+		if="$(arg show_frnt_raw)"/>
+	
+	<node 
+		name="$(anon auv_dwn_vision_raw)"
+		pkg="image_view" 
+		type="image_view"
+		args="image:=/auv_v2/d_cam/image_raw"
+		if="$(arg show_dwn_raw)"/>
+	
+	<node 
+		name="auv_frnt_vision_drknt"
+		pkg="image_view" 
+		type="image_view"
+		args="image:=/darknet_ros/detection_image"
+		if="$(arg show_frnt_drknt)"/>
+	
+</launch>
