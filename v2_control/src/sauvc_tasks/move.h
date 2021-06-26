@@ -40,6 +40,26 @@ void doYaw(float angle, float sensitivity)
 }
 
 /**
+ * @brief Performs heave until the current position lies within the given sensitivity
+ * @param depth Set-point to be achieved
+ * @param sensitivity SET_POINT +- sensitivity -> defines the range in which if the bot it, it is considered as successful
+ * 
+ */
+void doHeave(float depth, float sensitivity)
+{
+  my_auv_.set_xyz_[2] = depth;
+  ROS_INFO_STREAM("Performing heave");
+
+  ros::Rate rate(MOVE_SPIN_RATE);
+  while (fabs(my_auv_.set_xyz_[2] - my_auv_.cur_xyz_[2]) >= sensitivity && ros::ok())
+  {
+    ros::spinOnce();
+    //rate.sleep();
+  }
+  ROS_INFO_STREAM("Heave successful!");
+}
+
+/**
  * @brief Sets the given surge thrust for the given amount of time.
  * @param surge_thrust Amount of surge thrust
  * @param surge_time Time (in seconds) for which the thrust should be active
@@ -56,6 +76,25 @@ void doSurge(float surge_thrust, float surge_time)
   my_auv_.set_xyz_[0] = 0;
 }
 
-} // move
+} 
+
+/**
+ * @brief Sets the given sway thrust fot the given amount of time.
+ * @param sway_thrust Amount of sway thrust
+ * @param sway_time Time (in seconds) for which the thrust should be active
+ * 
+ */
+void doSway(float sway_thrust, float sway_time)
+{
+  my_auv_.allStop();
+  my_auv_.set_xyz_[1] = sway_time;
+  ROS_INFO_STREAM("Performing sway");
+
+  spinningDelay(sway_time);
+
+  my_auv_.set_xyz_[1] = 0;
+}// move
+
+
 
 #endif

@@ -21,10 +21,6 @@
 // Instance of the underwater vehicle (UWV)
 SoftUWV my_auv_;
 
-// Task completion boolean
-bool obstacle_found_;
-bool task_complete_;
-
 // Vars to read user cmds
 bool do_not_quit_ = true;
 short mode_ = IDLE_STATE;

@@ -10,7 +10,7 @@
 #include "move.h"
 
 // task-1 headerfiule (Contains all the functions required for performing task-1)
-#include "task_1.h"
+#include "task.h"
 
 /***************** ROV MODE ********************/
 
@@ -302,6 +302,10 @@ int main(int argc, char** argv)
   // begin the PID thread
   std::thread pid_thread;
 
+  // Instantiating task objects
+  task1 t1(1);
+
+
   // main loop
   while (do_not_quit_ && ros::ok())
   {
@@ -310,31 +314,8 @@ int main(int argc, char** argv)
 
       /****** define autonomous operation ****/
       if(mode_ == AUV_MODE)
-      { 
-        // resetting flags
-        obstacle_found_ = false;
-        task_complete_ = false;
-        while (ros::ok() && !task_complete_)
-        {
-          // Looking for object in the current field of view
-          task_1::detectObstacle();
-
-          ROS_INFO_STREAM("Obstacle found: " << obstacle_found_);
-
-          if (!obstacle_found_)
-          {
-            task_1::scanObstacle();
-          }
-          else
-          {
-            move::doSurge(28, 10);
-            my_auv_.allStop();
-            task_complete_ = true;
-            mode_ = IDLE_STATE;
-            ROS_INFO_STREAM("Task completed! Exiting AUV mode. Entering idle state.");
-          }
-          ros::spinOnce();
-        }
+      {   
+        t1.run();
       }
       /****** end autonomous operations ****/
 
